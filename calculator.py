@@ -26,7 +26,7 @@ while True:
             operator = char
 
     # Get Sentence Again if wrong
-    if wrong:
+    if wrong or (operator is None):
         print("\033[31mThe Formula is wrong!\033[0m")
         continue
 
@@ -39,6 +39,11 @@ while True:
         result = float(num1) - float(num2)
     elif operator == '/':
         num1, num2 = sentence.split('/')
+        # continue if num2 == 0
+        if float(num2) == 0.:
+            print("\033[31mYou cannot divide by zero!\033[0m")
+            continue
+
         result = float(num1) / float(num2)
     elif operator == 'x':
         num1, num2 = sentence.split('x')
